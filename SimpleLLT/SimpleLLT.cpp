@@ -1,7 +1,7 @@
 // SimpleLLT.cpp : Defines the entry point for the console application.
 //
 
-#include "stdafx.h"
+#include <stdio.h>
 #include <stdlib.h>
 #include <math.h>
 #include <memory.h>
@@ -30,7 +30,7 @@ void Cholesky_Decomposition(double * A, double * L, int N)
 	}
 }
 
-int _tmain(int argc, _TCHAR* argv[])
+int main(int argc, char* argv[])
 {
   const int N = 10;
 	double A[N*N], L[N*N];

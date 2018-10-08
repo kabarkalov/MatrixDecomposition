@@ -1,7 +1,6 @@
 ﻿// SimpleLU.cpp : Defines the entry point for the console application.
 //
 
-#include "stdafx.h"
 #include <stdlib.h>
 #include <time.h>
 #include <iostream>
@@ -40,7 +39,7 @@ void LU_Decomposition(double * A, double * L, double * U, int N)
 	}
 }
 
-int _tmain(int argc, _TCHAR* argv[])
+int main(int argc, char* argv[])
 {
 	const int N = 10;
 	double* A = new double[N*N]; 

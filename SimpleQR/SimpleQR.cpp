@@ -1,7 +1,6 @@
 // SimpleQR.cpp : Defines the entry point for the console application.
 //
 
-#include "stdafx.h"
 #include <time.h>
 #include <stdlib.h>
 #include <iostream>
@@ -397,7 +396,7 @@ void QR_Decomposition(double * A, double * Q, double * R, int N)
 
  
 
-int _tmain(int argc, _TCHAR* argv[])
+int main(int argc, char* argv[])
 {
   const int N = 10;
 	double* A = new double[N*N]; 
