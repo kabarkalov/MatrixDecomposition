@@ -39,24 +39,8 @@ void LU_Decomposition(double * A, double * L, double * U, int N)
 	}
 }
 
-int main(int argc, char* argv[])
+void PrintResult(double * A, double * L, double * U, int N)
 {
-	const int N = 10;
-	double* A = new double[N*N]; 
-	double* L = new double[N*N]; 
-  double* U = new double[N*N]; 
-  time_t begin, end;
-
-	//Генерация тестовой матрицы A
-	for(int i=0;i<N*N;i++)
-	{
-		A[i] = rand()%100 + 1;
-	}
-  begin = clock();
-	//Разложение
-	LU_Decomposition(A,L,U,N);
-  end = clock();
-  
 	//Вывод результатов
 	for(int i=0;i<N;i++)
 	{
@@ -88,10 +72,29 @@ int main(int argc, char* argv[])
 		}
 		cout<<endl;
 	}
+}
 
-  
+int main(int argc, char* argv[])
+{
+	const int N = 10;
+	double* A = new double[N*N]; 
+	double* L = new double[N*N]; 
+  double* U = new double[N*N]; 
+  time_t begin, end;
+
+	//Генерация тестовой матрицы A
+	for(int i=0;i<N*N;i++)
+	{
+		A[i] = rand()%100 + 1;
+	}
+  begin = clock();
+	//Разложение
+	LU_Decomposition(A,L,U,N);
+  end = clock();
+
+  PrintResult(A,L,U,N);
+    
   cout<<" Total time = "<< (end - begin)/1000.0<<"sec."<<endl;
-
 
 	return 0;
 }

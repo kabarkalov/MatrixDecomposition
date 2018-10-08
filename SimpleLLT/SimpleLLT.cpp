@@ -5,6 +5,7 @@
 #include <stdlib.h>
 #include <math.h>
 #include <memory.h>
+#include <time.h>
 
 void Cholesky_Decomposition(double * A, double * L, int N)
 {
@@ -30,33 +31,8 @@ void Cholesky_Decomposition(double * A, double * L, int N)
 	}
 }
 
-int main(int argc, char* argv[])
+void PrintResult(double * A, double * L, int N)
 {
-  const int N = 10;
-	double A[N*N], L[N*N];
-	//Генерация тестовой симметричной матрицы A > 0
-	for(int i=0;i<N;i++)
-	{
-  	for(int j=i+1;j<N;j++)
-    {
-		  A[i*N+j] = rand()%100 + 1;
-      A[j*N+i] = A[i*N+j];
-    }
-	}
-	for(int i=0;i<N;i++)
-	{
-    double sum = 0;
-    A[i*N+i]=0;
-  	for(int j=0;j<N;j++)
-    {
-		  sum += A[i*N+j];
-    }
-    A[i*N+i]=sum;
-	}
-
-	//Разложение
-	Cholesky_Decomposition(A,L,N);
-
 	//Вывод результатов
 	for(int i=0;i<N;i++)
 	{
@@ -92,6 +68,41 @@ int main(int argc, char* argv[])
 		}
 		printf("\n");
 	}
+}
+
+int main(int argc, char* argv[])
+{
+  const int N = 10;
+	double A[N*N], L[N*N];
+  time_t begin, end;
+	//Генерация тестовой симметричной матрицы A > 0
+	for(int i=0;i<N;i++)
+	{
+  	for(int j=i+1;j<N;j++)
+    {
+		  A[i*N+j] = rand()%100 + 1;
+      A[j*N+i] = A[i*N+j];
+    }
+	}
+	for(int i=0;i<N;i++)
+	{
+    double sum = 0;
+    A[i*N+i]=0;
+  	for(int j=0;j<N;j++)
+    {
+		  sum += A[i*N+j];
+    }
+    A[i*N+i]=sum;
+	}
+
+  begin = clock();
+	//Разложение
+	Cholesky_Decomposition(A,L,N);
+  end = clock();
+
+  PrintResult(A,L,N);
+
+  printf(" Total time = %f sec.\n", (end - begin)/1000.0);
 
 	return 0;
 }
