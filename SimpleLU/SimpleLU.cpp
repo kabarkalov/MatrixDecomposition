@@ -49,22 +49,22 @@ void PrintResult(double * A, double * L, double * U, int N)
 			cout.width(4);
 			cout<<A[i * N + j]<<" ";
 		}
-    cout<<endl;
-  }
-  cout<<endl;
+		cout<<endl;
+	}
+	cout<<endl;
 	cout.precision(3);
 	for(int i=0;i<N;i++)
-  {
+	{
 		for(int j=0;j<N;j++)
 		{
 			cout.width(6);
 			cout<<L[i * N + j]<<" ";
 		}
-    cout<<endl;
-  }
-  cout<<endl;
+		cout<<endl;
+	}
+	cout<<endl;
 	for(int i=0;i<N;i++)
-  {
+	{
 		for(int j=0;j<N;j++)
 		{
 			cout.width(6);
@@ -79,22 +79,22 @@ int main(int argc, char* argv[])
 	const int N = 10;
 	double* A = new double[N*N]; 
 	double* L = new double[N*N]; 
-  double* U = new double[N*N]; 
-  time_t begin, end;
+	double* U = new double[N*N]; 
+	time_t begin, end;
 
 	//Генерация тестовой матрицы A
 	for(int i=0;i<N*N;i++)
 	{
 		A[i] = rand()%100 + 1;
 	}
-  begin = clock();
+	begin = clock();
 	//Разложение
 	LU_Decomposition(A,L,U,N);
-  end = clock();
+	end = clock();
 
-  PrintResult(A,L,U,N);
+	PrintResult(A,L,U,N);
     
-  cout<<" Total time = "<< (end - begin)/1000.0<<"sec."<<endl;
+	cout<<" Total time = "<< (end - begin)/1000.0<<" sec."<<endl;
 
 	return 0;
 }
