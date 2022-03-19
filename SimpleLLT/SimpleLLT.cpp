@@ -41,30 +41,29 @@ void PrintResult(double * A, double * L, int N)
 			printf("%3.0lf ",A[i * N + j]);
 		}
 		printf("\n");
-  }
+	}
 	printf("\n");
 
 	for(int i=0;i<N;i++)
-  {
+	{
 		for(int j=0;j<N;j++)
 		{
-
-      if(j>i)
-        printf("   0  ");
-      else 
-        printf("%2.3lf ",L[i * N + j]);
+			if(j>i)
+				printf("   0  ");
+			else 
+				printf("%.3lf ",L[i * N + j]);
 		}
-    printf("\n");
-  }
-  printf("\n");
+		printf("\n");
+	}
+	printf("\n");
 	for(int i=0;i<N;i++)
-  {
+	{
 		for(int j=0;j<N;j++)
 		{
-      if(i>j)
-        printf("   0  ");
-      else
-			  printf("%2.3lf ",L[j * N + i]);
+			if(i>j)
+				printf("   0  ");
+			else
+				printf("%.3lf ",L[j * N + i]);
 		}
 		printf("\n");
 	}
@@ -72,37 +71,41 @@ void PrintResult(double * A, double * L, int N)
 
 int main(int argc, char* argv[])
 {
-  const int N = 10;
-	double A[N*N], L[N*N];
-  time_t begin, end;
+	const int N = 10;
+	double* A = new double[N * N];
+	double* L = new double[N * N];
+	time_t begin, end;
 	//Генерация тестовой симметричной матрицы A > 0
 	for(int i=0;i<N;i++)
 	{
-  	for(int j=i+1;j<N;j++)
-    {
-		  A[i*N+j] = rand()%100 + 1;
-      A[j*N+i] = A[i*N+j];
-    }
+  		for(int j=i+1;j<N;j++)
+		{
+			A[i*N+j] = rand()%100 + 1;
+			A[j*N+i] = A[i*N+j];
+		}
 	}
 	for(int i=0;i<N;i++)
 	{
-    double sum = 0;
-    A[i*N+i]=0;
-  	for(int j=0;j<N;j++)
-    {
-		  sum += A[i*N+j];
-    }
-    A[i*N+i]=sum;
+		double sum = 0;
+		A[i*N+i]=0;
+  		for(int j=0;j<N;j++)
+		{
+			sum += A[i*N+j];
+		}
+		A[i*N+i]=sum;
 	}
 
-  begin = clock();
+	begin = clock();
 	//Разложение
 	Cholesky_Decomposition(A,L,N);
-  end = clock();
+	end = clock();
 
-  PrintResult(A,L,N);
+	PrintResult(A,L,N);
 
-  printf(" Total time = %f sec.\n", (end - begin)/1000.0);
+	printf("\n Total time = %f sec.\n", (end - begin)/1000.0);
+
+	delete[] A;
+	delete[] L;
 
 	return 0;
 }
