@@ -6,11 +6,21 @@ using namespace std;
 
 void matmul(double* A, double* B, double* C, int N)
 {
+	// ijk-реализация
 	int i, j, k;
 	for (i = 0; i < N; i++)
-		for (j = 0; j < N; j++) 
+		for (j = 0; j < N; j++)
 			for (k = 0; k < N; k++) 
-				C[i*N + j] += A[i*N + k] * B[k*N + j];
+					C[i*N + j] += A[i*N + k] * B[k*N + j];
+
+	/*
+	// jki-реализация
+	for (j = 0; j < N; j++)
+		for (k = 0; k < N; k++)
+			for (i = 0; i < N; i++)
+				C[j * N + i] += A[j * N + k] * B[k * N + i];
+	*/
+
 }
 
 void matmulblock(double* A, double* B, double* C, int Size, int BlockSize = 50) {
@@ -76,7 +86,7 @@ void PrintResult(double* A, double* L, double* U, int N)
 
 int main(int argc, char* argv[])
 {
-	const int N = 2000;
+	const int N = 1000;
 	double* A = new double[N * N];
 	double* B = new double[N * N];
 	double* C = new double[N * N];
@@ -85,17 +95,19 @@ int main(int argc, char* argv[])
 	//Генерация тестовых матриц
 	for (int i = 0; i < N * N; i++)
 	{
-		A[i] = rand() % 10 + 1;
+		A[i] = 0;
 		B[i] = rand() % 10 + 1;
 		C[i] = 0;
 	}
+
+	for (int i = 0; i < N; i++) A[i * N + i] = 1;
 
 	begin = clock();
 	//Произведение
 	matmul(A, B, C, N);
 	//matmulblock(A, B, C, N);
 	end = clock();
-//	PrintResult(A, B, C, N);
+	//PrintResult(A, B, C, N);
 	cout << " Total time = " << (end - begin) / 1000.0 << " sec." << endl;
 
 	delete[] A;
