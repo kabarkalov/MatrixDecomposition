@@ -11,6 +11,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "SimpleQR", "SimpleQR\Simple
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "MatrixMultiplication", "MatrixMultiplication\MatrixMultiplication.vcxproj", "{1569907B-A94A-4B4D-B2A5-88C38C8F605D}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Triangle", "Triangle\Triangle.vcxproj", "{8037418F-BFBD-4872-AF48-A741ABB4329A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Win32 = Debug|Win32
@@ -45,6 +47,14 @@ Global
 		{1569907B-A94A-4B4D-B2A5-88C38C8F605D}.Release|Win32.Build.0 = Release|Win32
 		{1569907B-A94A-4B4D-B2A5-88C38C8F605D}.Release|x64.ActiveCfg = Release|x64
 		{1569907B-A94A-4B4D-B2A5-88C38C8F605D}.Release|x64.Build.0 = Release|x64
+		{8037418F-BFBD-4872-AF48-A741ABB4329A}.Debug|Win32.ActiveCfg = Debug|Win32
+		{8037418F-BFBD-4872-AF48-A741ABB4329A}.Debug|Win32.Build.0 = Debug|Win32
+		{8037418F-BFBD-4872-AF48-A741ABB4329A}.Debug|x64.ActiveCfg = Debug|x64
+		{8037418F-BFBD-4872-AF48-A741ABB4329A}.Debug|x64.Build.0 = Debug|x64
+		{8037418F-BFBD-4872-AF48-A741ABB4329A}.Release|Win32.ActiveCfg = Release|Win32
+		{8037418F-BFBD-4872-AF48-A741ABB4329A}.Release|Win32.Build.0 = Release|Win32
+		{8037418F-BFBD-4872-AF48-A741ABB4329A}.Release|x64.ActiveCfg = Release|x64
+		{8037418F-BFBD-4872-AF48-A741ABB4329A}.Release|x64.Build.0 = Release|x64
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
