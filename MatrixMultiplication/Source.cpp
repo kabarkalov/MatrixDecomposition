@@ -6,13 +6,15 @@ using namespace std;
 
 void matmul(double* A, double* B, double* C, int N)
 {
+	
 	// ijk-реализация
 	int i, j, k;
+	
 	for (i = 0; i < N; i++)
 		for (j = 0; j < N; j++)
 			for (k = 0; k < N; k++) 
 					C[i*N + j] += A[i*N + k] * B[k*N + j];
-
+	
 	/*
 	// jki-реализация
 	for (j = 0; j < N; j++)
@@ -95,7 +97,7 @@ int main(int argc, char* argv[])
 	//Генерация тестовых матриц
 	for (int i = 0; i < N * N; i++)
 	{
-		A[i] = 0;
+		A[i] = rand() % 10 + 1;
 		B[i] = rand() % 10 + 1;
 		C[i] = 0;
 	}
